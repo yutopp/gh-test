@@ -1,0 +1,16 @@
+name:          LangRefJP
+url:           http://localhost:4000
+
+source:        .
+destination:   ./_site
+plugins:       ./_plugins
+
+pamalink:      /:categories/:title.html
+
+exclude:       ['__deploy']
+
+# DartRefJp
+drj_root:
+  reference:
+    
+drj_api_ref:   /reference/api
