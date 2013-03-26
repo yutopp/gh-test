@@ -7,7 +7,7 @@ plugins:       ./_plugins
 
 pamalink:      /:categories/:title.html
 
-exclude:       ['__deploy']
+exclude:       ['__deploy', 'benri.rb', 'README.md']
 
 # DartRefJp
 drj_root:
