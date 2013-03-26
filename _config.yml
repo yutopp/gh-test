@@ -1,5 +1,6 @@
 name:          GH-Test
 url:           http://yutopp.github.com/gh-test
+repository:    https://github.com/yutopp/gh-test
 
 source:        .
 destination:   ./_site

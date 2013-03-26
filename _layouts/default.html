@@ -43,6 +43,9 @@
                     </button>
                     <a class="brand" href="{{site.url}}">{{site.name}}</a>
                     <div class="nav-collapse collapse">
+                        <p class="navbar-text pull-right">
+                            <a href="{{site.repository}}" class="navbar-link">View on GitHub!</a>
+                        </p>
                         <ul class="nav">
 {% assign split_url = page.url | split:'/' %}
 {% assign split_url_limit = split_url | size | minus: 1 %}
