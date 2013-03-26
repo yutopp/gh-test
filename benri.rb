@@ -4,8 +4,10 @@ require 'fileutils'
 
 SITE_DIR = '_site'
 FOR_GH_DIR = '__deploy'
+
 REPO = 'git@github.com:yutopp/gh-test.git'
 REPO_NAME = 'gh-test'
+
 BRANCH_GH_PAGES = 'gh-pages'
 
 case ARGV[0]
@@ -19,11 +21,18 @@ when 'setup'
         current_branch = File.basename( `git symbolic-ref HEAD 2> /dev/null` )
         begin
           system "git checkout -B #{BRANCH_GH_PAGES}"
-          p Dir.pwd
+          
           Dir.entries( Dir.pwd ).each do |f|
-            p f
+            FileUtils.remove_entry_secure f unless f == '.git' || f == '.' || f == '..'
           end
-        
+          FileUtils.touch '.nojekyll'
+          
+          Dir.entries( Dir.pwd ).each do |f|
+            p "-> #{f}"
+          end
+          system "git rm *"
+          system "git commit -m \"init\""
+          
         ensure
           system "git checkout #{current_branch}"
         end
@@ -42,11 +51,12 @@ when 'deploy'
         p src_dir, dst_dir
         current_branch = File.basename( `git symbolic-ref HEAD 2> /dev/null` )
         begin
-          system "git checkout -B #{BRANCH_GH_PAGES}"
+          system "git checkout #{BRANCH_GH_PAGES}"
           
           # copy site data
           FileUtils.cp_r( Dir.entries( src_dir ).select{|p| p != '.' && p != '..'}.map{|p| "#{src_dir}/#{p}"}, dst_dir )
           
+          system "git reset"
           system "git add . -n"
           system "git add ."
           system "git commit -m \"generate\""
@@ -58,7 +68,11 @@ when 'deploy'
       end
     end
   end
+  
+when 'clear'
+  system "git push origin :#{BRANCH_GH_PAGES}"
 
+  
 else
-  p "Use -> ./benri (setup)"
+  p "Use -> ./benri (setup|deploy|clear)"
 end

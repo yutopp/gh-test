@@ -37,7 +37,7 @@
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-{% for item in site.drj_content_map_for_root %}
+{% for item in site.llj_content_map_for_root %}
                         <span class="icon-bar"></span>
 {% endfor %}
                     </button>
@@ -51,7 +51,7 @@
   {% assign url_part = item | remove:'.html' %}
 {% endfor %}
 
-{% for item in site.drj_content_map_for_root %}
+{% for item in site.llj_content_map_for_root %}
                             <li{% if item[0] == url_part %} class="active"{% endif %}><a href="{{site.url}}/{{item[0]}}">{{item[1].title}}</a></li>
 {% endfor %}
                         </ul>
@@ -70,7 +70,7 @@
 {% comment %}...{% endcomment %}
                             <li><i class="icon-time"></i></li>
 {% assign current_node = nil %}
-{% assign current_child = site.drj_content_map %}
+{% assign current_child = site.llj_content_map %}
 {% assign current_path = "" %}
 
 {% assign split_url = page.url | split:'/' %}
@@ -94,11 +94,11 @@
 
                         <ul class="nav nav-list">
 {% comment %}Navigation!{% endcomment %}
-{% case page.drj_type %}
+{% case page.llj_type %}
 
 {% when 'api-ref' %}{% comment %}for API Reference{% endcomment %}
   {% assign current_node = nil %}
-  {% assign current_child = site.drj_content_map %}
+  {% assign current_child = site.llj_content_map %}
   {% assign current_api = '' %}
   {% assign current_path = "" %}
 
@@ -112,9 +112,9 @@
     {% assign current_path = current_path | append: url_part | append: "/" %}
   {% endfor %}
                             <li class="nav-header"><i class="icon-leaf"></i>API Reference</li>
-  {% for api in site.drj_api_map %}
+  {% for api in site.llj_api_map %}
     {% if api[0] == current_api %}
-                            <li class="active"><a href="{{ site.url }}{{ site.drj_api_ref }}/{{ api[0] }}">{{ api[0] }}</a></li>
+                            <li class="active"><a href="{{ site.url }}{{ site.llj_api_ref }}/{{ api[0] }}">{{ api[0] }}</a></li>
                             <ul class="nav nav-list">
       {% for entry in api[1] %}
         {% assign filename = entry.name | append:'.html' %}
@@ -123,14 +123,14 @@
       {% endfor %}
                             </ul>
     {% else %}
-                            <li><a href="{{ site.url }}{{ site.drj_api_ref }}/{{ api[0] }}">{{ api[0] }}</a></li>
+                            <li><a href="{{ site.url }}{{ site.llj_api_ref }}/{{ api[0] }}">{{ api[0] }}</a></li>
     {% endif %}
   {% endfor %}
 
 
 {% else %}{% comment %}for Default{% endcomment %}
   {% assign current_node = nil %}
-  {% assign current_child = site.drj_content_map %}
+  {% assign current_child = site.llj_content_map %}
   {% assign current_path = "" %}
 
   {% assign split_url = page.url | split:'/' %}

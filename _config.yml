@@ -1,5 +1,5 @@
-name:          LangRefJP
-url:           http://localhost:4000
+name:          GH-Test
+url:           http://yutopp.github.com/gh-test/
 
 source:        .
 destination:   ./_site
@@ -9,8 +9,8 @@ pamalink:      /:categories/:title.html
 
 exclude:       ['__deploy', 'benri.rb', 'README.md']
 
-# DartRefJp
-drj_root:
+# LangRefJP
+llj_root:
   reference:
     
-drj_api_ref:   /reference/api
+llj_api_ref:   /reference/api

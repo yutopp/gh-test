@@ -3,33 +3,33 @@ module Jekyll
     safe true
     
     def generate(site)
-      site.config['drj_content_map'] = Hash.new
+      site.config['llj_content_map'] = Hash.new
       
       # probe root
-      site.config['drj_content_map'][''] = Hash.new
-      site.config['drj_content_map']['']['_child'] = Hash.new
-      site.config['drj_content_map']['']['_child']['index'] = Hash.new
-      site.config['drj_content_map']['']['_child']['index']['title'] = "Home"
-      site.config['drj_root'].each do |root, value|
+      site.config['llj_content_map'][''] = Hash.new
+      site.config['llj_content_map']['']['_child'] = Hash.new
+      site.config['llj_content_map']['']['_child']['index'] = Hash.new
+      site.config['llj_content_map']['']['_child']['index']['title'] = "Home"
+      site.config['llj_root'].each do |root, value|
         #p "=> #{get_title(root, site.source)}"
-        probe_child( site.config['drj_content_map']['']['_child'], root, site.source )
+        probe_child( site.config['llj_content_map']['']['_child'], root, site.source )
       end
       
       
       #
-      site.config['drj_content_map_for_root'] = Hash.new
-      site.config['drj_content_map_for_root'][''] = Hash.new
-      site.config['drj_content_map_for_root']['']['title'] = "Home"
-      site.config['drj_root'].each do |root, value|
+      site.config['llj_content_map_for_root'] = Hash.new
+      site.config['llj_content_map_for_root'][''] = Hash.new
+      site.config['llj_content_map_for_root']['']['title'] = "Home"
+      site.config['llj_root'].each do |root, value|
         title = get_title( nil, "#{site.source}/#{root}/index.md" ) || get_title( nil, "#{site.source}/#{root}/index.html" ) || nil
         next if title.nil?
         
-        site.config['drj_content_map_for_root'][root] = Hash.new
-        site.config['drj_content_map_for_root'][root]['title'] = title
-        #probe_child( site.config['drj_content_map']['']['_child'], root, site.source )
+        site.config['llj_content_map_for_root'][root] = Hash.new
+        site.config['llj_content_map_for_root'][root]['title'] = title
+        #probe_child( site.config['llj_content_map']['']['_child'], root, site.source )
       end
       
-      #p site.config['drj_content_map_for_root']
+      #p site.config['llj_content_map_for_root']
     end
     
     private
