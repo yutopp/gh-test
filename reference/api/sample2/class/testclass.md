@@ -1,4 +1,4 @@
 ---
-drj_type: api-ref
+llj_type: api-ref
 ---
 testclass

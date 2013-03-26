@@ -1,5 +1,5 @@
 name:          GH-Test
-url:           http://yutopp.github.com/gh-test/
+url:           http://yutopp.github.com/gh-test
 
 source:        .
 destination:   ./_site
@@ -7,7 +7,7 @@ plugins:       ./_plugins
 
 pamalink:      /:categories/:title.html
 
-exclude:       ['__deploy', 'benri.rb', 'README.md']
+exclude:       ['__deploy', '_dev_site', 'benri.rb', 'README.md']
 
 # LangRefJP
 llj_root:
